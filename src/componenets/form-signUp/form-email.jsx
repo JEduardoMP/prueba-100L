@@ -2,25 +2,29 @@
 import { useEffect, useState } from "react";
 // Router
 import { Link } from "react-router-dom";
+// Components
+import PasswordRequirements from "../passwordRequirements/requirements";
+// Custom hooks
 import WindowSizeInfo from "../../hooks/getWindowSize";
-const FormEmail = ({ handleDataInfo, handleDataSmall }) => {
+// Services
+import { handleSingnUp } from "../../services/signUp";
 
+const FormEmail = ({ handleDataInfo, handleDataSmall }) => {
   const [inputInfo, setInputInfo] = useState({ email: "", password: "" });
-  
-  const {width} = WindowSizeInfo();
-  
+
   useEffect(() => {
     if (width > 768) {
       handleDataInfo(inputInfo.email, inputInfo.password);
-    }else {
+    } else {
       handleDataSmall(inputInfo.email, inputInfo.password);
     }
-  }, [inputInfo])
+  }, [inputInfo]);
 
+  const { width } = WindowSizeInfo();
 
   return (
-    <div>
-      <form action="">
+    <div className="my-8">
+      <form action="" onSubmit={handleSingnUp()}>
         <h2 className="font-bold text-lg">Crea tu cuenta</h2>
         <br />
         <p className="text-base">
@@ -74,6 +78,16 @@ const FormEmail = ({ handleDataInfo, handleDataSmall }) => {
           </div>
         </div>
       </form>
+      {inputInfo.email === "" && inputInfo.password === "" ? (
+        <br />
+      ) : (
+        <PasswordRequirements pass={inputInfo.password} />
+      )}
+      <input
+        className="mt-4 bg-[#eaeaea] text-[#8c8c8c] px-4 py-2 rounded"
+        type="submit"
+        value="Siguiente"
+      />
     </div>
   );
 };

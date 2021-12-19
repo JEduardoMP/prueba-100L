@@ -36,15 +36,15 @@ const SmallView = () => {
           </div>
           <br />
           <div className="flex justify-evenly items-center mx-4">
-            <div className="shadow-sm border p-2">
+            <button className="shadow-sm border p-2">
               <img src={Google} alt="Google" />
-            </div>
-            <div className="shadow-sm border p-2">
+            </button>
+            <button className="shadow-sm border p-2">
               <img src={Windows} alt="Windows" />
-            </div>
-            <div className="shadow-sm border p-2">
+            </button>
+            <button className="shadow-sm border p-2">
               <img src={Facebook} alt="Facebook" />
-            </div>
+            </button>
           </div>
         </div>
       ) : (

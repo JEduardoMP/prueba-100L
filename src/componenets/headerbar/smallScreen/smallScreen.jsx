@@ -7,8 +7,9 @@ const SmallScreen = () => {
 
       <div className="flex absolute w-full justify-center items-center">
         {/* Hamburger */}
+        <button className='absolute left-6'>
         <svg
-          className='absolute left-6'
+          // className='absolute left-6'
           width="24"
           height="24"
           viewBox="0 0 24 24"
@@ -22,8 +23,10 @@ const SmallScreen = () => {
             fill="#fff"
           />
         </svg>
+        </button>
 
         {/* Logo */}
+        <button>
         <svg
           width="36"
           height="30"
@@ -38,6 +41,7 @@ const SmallScreen = () => {
             fill="#fff"
           />
         </svg>
+        </button>
       </div>
     </nav>
   )
