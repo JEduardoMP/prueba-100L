@@ -24,7 +24,7 @@ const BigScreen = () => {
         />
       </svg>
 
-      <ul className="flex text-red-400 ">
+      <ul className="flex text-primary">
         <li className="px-8 py-5">
           <Link to='/' exact>
             Cómo funciona

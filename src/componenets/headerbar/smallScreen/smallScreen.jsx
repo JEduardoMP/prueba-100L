@@ -2,7 +2,7 @@ import Angel from '../../../assets/AngelIndependencia.jpg'
 
 const SmallScreen = () => {
   return (
-    <nav className="bg-red-500 h-14 flex justify-center items-center overflow-hidden" >
+    <nav className="h-14 flex justify-center items-center overflow-hidden" >
       <img src={Angel} alt="Angel de la Independencia" className='relative top-36' />
 
       <div className="flex absolute w-full justify-center items-center">
