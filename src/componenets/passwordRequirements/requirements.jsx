@@ -35,8 +35,8 @@ const PasswordRequirements = ({ pass }) => {
           ) : (
             <svg
               className="mr-2"
-              width="10"
-              height="10"
+              width="9"
+              height="9"
               viewBox="0 0 10 10"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -61,8 +61,8 @@ const PasswordRequirements = ({ pass }) => {
           ) : (
             <svg
               className="mr-2"
-              width="10"
-              height="10"
+              width="8"
+              height="8"
               viewBox="0 0 10 10"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -102,8 +102,8 @@ const PasswordRequirements = ({ pass }) => {
           {excludePhrase(pass) === false ? (
             <svg
               className="mr-2"
-              width="8"
-              height="8"
+              width="6"
+              height="6"
               viewBox="0 0 8 8"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -185,6 +185,7 @@ const PasswordRequirements = ({ pass }) => {
         type="password"
         placeholder="Contraseña"
         onChange={(e) => setPasswordConfirm(e.target.value)}
+        required
       />
       {passwordVerify(pass, passwordConfirm) === true &&
       passwordConfirm.length > 0 ? (

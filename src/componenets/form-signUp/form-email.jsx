@@ -1,7 +1,7 @@
 // React hooks
 import { useEffect, useState } from "react";
 // Router
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 // Components
 import PasswordRequirements from "../passwordRequirements/requirements";
 // Custom hooks
@@ -11,6 +11,7 @@ import { handleSingnUp } from "../../services/signUp";
 
 const FormEmail = ({ handleDataInfo, handleDataSmall }) => {
   const [inputInfo, setInputInfo] = useState({ email: "", password: "" });
+  const [errors, setErrors] = useState({ info: "" });
 
   useEffect(() => {
     if (width > 768) {
@@ -20,13 +21,25 @@ const FormEmail = ({ handleDataInfo, handleDataSmall }) => {
     }
   }, [inputInfo]);
 
+  const navigate = useNavigate();
+
   const handleForm = async (e) => {
     e.preventDefault();
     const newRegister = {
       email: inputInfo.email,
       password: inputInfo.password,
     };
-    await handleSingnUp(newRegister);
+    const result = await handleSingnUp(newRegister);
+
+    if (result.status === 201) {
+      navigate("/phoneNum");
+    } else {
+      const correct = result.data.code.split('_').join(' '); 
+      setErrors({
+        info: correct,
+      });
+      console.log(result.status);
+    }
   };
 
   const { width } = WindowSizeInfo();
@@ -90,11 +103,12 @@ const FormEmail = ({ handleDataInfo, handleDataSmall }) => {
       ) : (
         <div>
           <PasswordRequirements pass={inputInfo.password} />
-            <input
-              className="mt-4 bg-[#eaeaea] text-[#8c8c8c] px-4 py-2 rounded"
-              type="submit"
-              value="Siguiente"
-            />
+          <input
+            className="mt-4 bg-[#eaeaea] text-[#8c8c8c] px-4 py-2 rounded"
+            type="submit"
+            value="Siguiente"
+          />
+          {errors.info === "" ? <span></span> : <p className="mt-4 bg-primary text-white px-4 py-2 text-center">{errors.info}</p>}
         </div>
       )}
     </form>

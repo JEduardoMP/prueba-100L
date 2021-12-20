@@ -1,3 +1,4 @@
+// Axios
 import axios from "axios";
 
 export const handleSingnUp = async (info) => {
@@ -5,16 +6,11 @@ export const handleSingnUp = async (info) => {
     console.log(info);
     const response = await axios({
       url: "https://frontend-recruiting.100ladrillos.com/api/signUp",
-      mode: "no-cors",
       method: "post",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      data: JSON.stringify(info),
+      data: info
     });
-    const result = await response.json();
-    console.log(result);
+    return response
   } catch (error) {
-    console.log(`El error es: ${error}`);
+    return error.response
   }
 };
